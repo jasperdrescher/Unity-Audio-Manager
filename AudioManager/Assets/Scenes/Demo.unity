@@ -186,6 +186,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114896920272419894, guid: f36d7efe15559494d9b74cbfc6c52ea0,
+        type: 2}
+      propertyPath: soundEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4098427709298246, guid: f36d7efe15559494d9b74cbfc6c52ea0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -224,6 +229,26 @@ Prefab:
       value: 
       objectReference: {fileID: 24100000, guid: 49ccd0344a9b0674398dcb22a055ecfc,
         type: 2}
+    - target: {fileID: 114896920272419894, guid: f36d7efe15559494d9b74cbfc6c52ea0,
+        type: 2}
+      propertyPath: soundEffects.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d008767e00d3e143969842bf070f7d5, type: 3}
+    - target: {fileID: 114896920272419894, guid: f36d7efe15559494d9b74cbfc6c52ea0,
+        type: 2}
+      propertyPath: soundEffects.Array.data[0].name
+      value: Futuristic
+      objectReference: {fileID: 0}
+    - target: {fileID: 114896920272419894, guid: f36d7efe15559494d9b74cbfc6c52ea0,
+        type: 2}
+      propertyPath: soundEffects.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114896920272419894, guid: f36d7efe15559494d9b74cbfc6c52ea0,
+        type: 2}
+      propertyPath: soundEffects.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f36d7efe15559494d9b74cbfc6c52ea0, type: 2}
   m_IsPrefabAsset: 0
