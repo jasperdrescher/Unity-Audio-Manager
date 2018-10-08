@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField]
-    Audio[] soundEffects;
+    private AudioMixer mixer;
+
+    [SerializeField]
+    private Audio[] soundEffects;
 
     // Awake is always called before any Start functions
     void Awake()
