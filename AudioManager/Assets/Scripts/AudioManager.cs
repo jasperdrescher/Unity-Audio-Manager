@@ -104,6 +104,8 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public void SetMasterVolume(float value)
     {
+        // Translate unit range to logarithmic value. 
+        value = 20f * Mathf.Log10(value);
         mixer.SetFloat("masterVolume", value);
     }
 
@@ -112,6 +114,8 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public void SetMusicVolume(float value)
     {
+        // Translate unit range to logarithmic value. 
+        value = 20f * Mathf.Log10(value);
         mixer.SetFloat("musicVolume", value);
     }
 
@@ -120,6 +124,8 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public void SetSoundEffectsVolume(float value)
     {
+        // Translate unit range to logarithmic value. 
+        value = 20f * Mathf.Log10(value);
         mixer.SetFloat("effectsVolume", value);
     }
 
