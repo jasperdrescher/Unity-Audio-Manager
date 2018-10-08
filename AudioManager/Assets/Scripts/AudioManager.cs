@@ -23,9 +23,11 @@ public class AudioManager : MonoBehaviour
     {
         for (int i = 0; i < soundEffects.Length; i++)
         {
-            GameObject _go = new GameObject("Sound_" + i + "_" + soundEffects[i].name);
-            _go.transform.SetParent(gameObject.transform);
-            soundEffects[i].SetSource(_go.AddComponent<AudioSource>());
+            GameObject gameObject = new GameObject("Audio_" + i + "_" + soundEffects[i].name);
+            gameObject.transform.SetParent(gameObject.transform);
+            gameObject.AddComponent<AudioSource>();
+            gameObject.GetComponent<AudioSource>().outputAudioMixerGroup = mixer.outputAudioMixerGroup;
+            soundEffects[i].SetSource(gameObject.GetComponent<AudioSource>());
         }
     }
 
@@ -95,5 +97,53 @@ public class AudioManager : MonoBehaviour
         }
 
         Debug.Log("AudioManager: " + name + " not found in list.");
+    }
+
+    /// <summary>
+    /// Set the master volume of the audio mixer.
+    /// </summary>
+    public void SetMasterVolume(float value)
+    {
+        mixer.SetFloat("masterVolume", value);
+    }
+
+    /// <summary>
+    /// Set the music volume of the audio mixer.
+    /// </summary>
+    public void SetMusicVolume(float value)
+    {
+        mixer.SetFloat("musicVolume", value);
+    }
+
+    /// <summary>
+    /// Set the SFX volume of the audio mixer.
+    /// </summary>
+    public void SetSoundEffectsVolume(float value)
+    {
+        mixer.SetFloat("effectsVolume", value);
+    }
+
+    /// <summary>
+    /// Clear the master volume of the audio mixer. This is useful for audio snapshots.
+    /// </summary>
+    public void ClearMasterVolume()
+    {
+        mixer.ClearFloat("masterVolume");
+    }
+
+    /// <summary>
+    /// Clear the music volume of the audio mixer. This is useful for audio snapshots.
+    /// </summary>
+    public void ClearMusicVolume()
+    {
+        mixer.ClearFloat("musicVolume");
+    }
+
+    /// <summary>
+    /// Clear the SFX volume of the audio mixer. This is useful for audio snapshots.
+    /// </summary>
+    public void ClearSoundEffectsVolume()
+    {
+        mixer.ClearFloat("effectsVolume");
     }
 }
