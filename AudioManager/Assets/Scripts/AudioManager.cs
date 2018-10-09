@@ -24,24 +24,37 @@ public class AudioManager : MonoBehaviour
     // Awake is always called before any Start functions
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
 
         for (int i = 0; i < music.Length; i++)
         {
-            GameObject audioObject = new GameObject("Audio_" + i + "_" + soundEffects[i].name);
-            audioObject.transform.SetParent(gameObject.transform);
+            GameObject audioObject = new GameObject("Music_" + i + "_" + music[i].audioName);
             audioObject.AddComponent<AudioSource>();
             audioObject.GetComponent<AudioSource>().outputAudioMixerGroup = mixer.FindMatchingGroups("Music")[0];
-            soundEffects[i].SetSource(audioObject.GetComponent<AudioSource>());
+            audioObject.GetComponent<AudioSource>().loop = music[i].audioLoop;
+            audioObject.GetComponent<AudioSource>().volume = music[i].audioVolume;
+            audioObject.GetComponent<AudioSource>().clip = music[i].audioClip;
+            music[i].audioSource = audioObject.GetComponent<AudioSource>();
         }
 
         for (int i = 0; i < soundEffects.Length; i++)
         {
-            GameObject audioObject = new GameObject("Audio_" + i + "_" + soundEffects[i].name);
-            audioObject.transform.SetParent(gameObject.transform);
+            GameObject audioObject = new GameObject("Effects_" + i + "_" + soundEffects[i].audioName);
             audioObject.AddComponent<AudioSource>();
             audioObject.GetComponent<AudioSource>().outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
-            soundEffects[i].SetSource(audioObject.GetComponent<AudioSource>());
+            audioObject.GetComponent<AudioSource>().loop = soundEffects[i].audioLoop;
+            audioObject.GetComponent<AudioSource>().volume = soundEffects[i].audioVolume;
+            audioObject.GetComponent<AudioSource>().clip = soundEffects[i].audioClip;
+            soundEffects[i].audioSource = audioObject.GetComponent<AudioSource>();
         }
     }
 
@@ -55,7 +68,7 @@ public class AudioManager : MonoBehaviour
     {
         for (int i = 0; i < music.Length; i++)
         {
-            if (music[i].name == name)
+            if (music[i].audioName == name)
             {
                 music[i].Play();
                 return;
@@ -70,7 +83,7 @@ public class AudioManager : MonoBehaviour
     {
         for (int i = 0; i < soundEffects.Length; i++)
         {
-            if (soundEffects[i].name == name)
+            if (soundEffects[i].audioName == name)
             {
                 soundEffects[i].Play();
                 return;
@@ -83,11 +96,11 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Pause a sound.
     /// </summary>
-    public void PauseSound(string _name)
+    public void PauseSound(string name)
     {
         for (int i = 0; i < soundEffects.Length; i++)
         {
-            if (soundEffects[i].name == _name)
+            if (soundEffects[i].audioName == name)
             {
                 soundEffects[i].Pause();
                 return;
@@ -100,11 +113,11 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Resume a sound-effect.
     /// </summary>
-    public void ResumeSound(string _name)
+    public void ResumeSound(string name)
     {
         for (int i = 0; i < soundEffects.Length; i++)
         {
-            if (soundEffects[i].name == _name)
+            if (soundEffects[i].audioName == name)
             {
                 soundEffects[i].Resume();
                 return;
@@ -117,11 +130,11 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Stop a sound-effect.
     /// </summary>
-    public void StopSound(string _name)
+    public void StopSound(string name)
     {
         for (int i = 0; i < soundEffects.Length; i++)
         {
-            if (soundEffects[i].name == _name)
+            if (soundEffects[i].audioName == name)
             {
                 soundEffects[i].Stop();
                 return;

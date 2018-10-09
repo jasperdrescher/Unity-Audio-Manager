@@ -20,13 +20,13 @@ AudioMixerController:
   - guid: 5ac9b23832dd2494187b4aa2510c430e
     name: masterPitch
   - guid: 673c4a1f5956bc242a01e7d6b4c0ff20
-    name: MusicPitch
+    name: musicPitch
   - guid: 8d906a1beb3abda48b161d669a57f040
-    name: MusicVolume
+    name: musicVolume
   - guid: 05117dd87adde7042a5aa8e842f7bded
-    name: EffectsPitch
+    name: effectsPitch
   - guid: e84262d0611529945aac13df22b6081e
-    name: EffectsVolume
+    name: effectsVolume
   m_AudioMixerGroupViews:
   - guids:
     - 0cf6cf56bfbc5324d9fbfe085c5cde9a
