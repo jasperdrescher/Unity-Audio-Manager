@@ -5,29 +5,61 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    [Header("Preferences")]
+    [SerializeField]
+    private float volumeThreshold = -80.0f;
+
     [Header("References")]
     [SerializeField]
     private AudioMixer mixer;
 
     [SerializeField]
+    private Audio[] music;
+
+    [SerializeField]
     private Audio[] soundEffects;
+
+    public static AudioManager instance;
 
     // Awake is always called before any Start functions
     void Awake()
     {
+        instance = this;
 
+        for (int i = 0; i < music.Length; i++)
+        {
+            GameObject audioObject = new GameObject("Audio_" + i + "_" + soundEffects[i].name);
+            audioObject.transform.SetParent(gameObject.transform);
+            audioObject.AddComponent<AudioSource>();
+            audioObject.GetComponent<AudioSource>().outputAudioMixerGroup = mixer.FindMatchingGroups("Music")[0];
+            soundEffects[i].SetSource(audioObject.GetComponent<AudioSource>());
+        }
+
+        for (int i = 0; i < soundEffects.Length; i++)
+        {
+            GameObject audioObject = new GameObject("Audio_" + i + "_" + soundEffects[i].name);
+            audioObject.transform.SetParent(gameObject.transform);
+            audioObject.AddComponent<AudioSource>();
+            audioObject.GetComponent<AudioSource>().outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
+            soundEffects[i].SetSource(audioObject.GetComponent<AudioSource>());
+        }
     }
 
     // Use this for initialization
     void Start()
     {
-        for (int i = 0; i < soundEffects.Length; i++)
+
+    }
+
+    public void PlayMusic(string name)
+    {
+        for (int i = 0; i < music.Length; i++)
         {
-            GameObject gameObject = new GameObject("Audio_" + i + "_" + soundEffects[i].name);
-            gameObject.transform.SetParent(gameObject.transform);
-            gameObject.AddComponent<AudioSource>();
-            gameObject.GetComponent<AudioSource>().outputAudioMixerGroup = mixer.outputAudioMixerGroup;
-            soundEffects[i].SetSource(gameObject.GetComponent<AudioSource>());
+            if (music[i].name == name)
+            {
+                music[i].Play();
+                return;
+            }
         }
     }
 
@@ -102,31 +134,52 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Set the master volume of the audio mixer.
     /// </summary>
-    public void SetMasterVolume(float value)
+    public void SetMasterVolume(float sliderValue)
     {
-        // Translate unit range to logarithmic value. 
-        value = 20f * Mathf.Log10(value);
-        mixer.SetFloat("masterVolume", value);
+        if (sliderValue <= 0)
+        {
+            mixer.SetFloat("masterVolume", volumeThreshold);
+        }
+        else
+        {
+            // Translate unit range to logarithmic value. 
+            float value = 20f * Mathf.Log10(sliderValue);
+            mixer.SetFloat("masterVolume", value);
+        }
     }
 
     /// <summary>
     /// Set the music volume of the audio mixer.
     /// </summary>
-    public void SetMusicVolume(float value)
+    public void SetMusicVolume(float sliderValue)
     {
-        // Translate unit range to logarithmic value. 
-        value = 20f * Mathf.Log10(value);
-        mixer.SetFloat("musicVolume", value);
+        if (sliderValue <= 0)
+        {
+            mixer.SetFloat("musicVolume", volumeThreshold);
+        }
+        else
+        {
+            // Translate unit range to logarithmic value. 
+            float value = 20f * Mathf.Log10(sliderValue);
+            mixer.SetFloat("musicVolume", value);
+        }
     }
 
     /// <summary>
     /// Set the SFX volume of the audio mixer.
     /// </summary>
-    public void SetSoundEffectsVolume(float value)
+    public void SetSoundEffectsVolume(float sliderValue)
     {
-        // Translate unit range to logarithmic value. 
-        value = 20f * Mathf.Log10(value);
-        mixer.SetFloat("effectsVolume", value);
+        if (sliderValue <= 0)
+        {
+            mixer.SetFloat("effectsVolume", volumeThreshold);
+        }
+        else
+        {
+            // Translate unit range to logarithmic value. 
+            float value = 20f * Mathf.Log10(sliderValue);
+            mixer.SetFloat("effectsVolume", value);
+        }
     }
 
     /// <summary>

@@ -361,7 +361,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -385,6 +385,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114896920272419894, guid: f36d7efe15559494d9b74cbfc6c52ea0,
+        type: 2}
+      propertyPath: music.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114896920272419894, guid: f36d7efe15559494d9b74cbfc6c52ea0,
         type: 2}
       propertyPath: soundEffects.Array.size
@@ -446,6 +451,31 @@ Prefab:
     - target: {fileID: 114896920272419894, guid: f36d7efe15559494d9b74cbfc6c52ea0,
         type: 2}
       propertyPath: soundEffects.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114896920272419894, guid: f36d7efe15559494d9b74cbfc6c52ea0,
+        type: 2}
+      propertyPath: music.Array.data[0].name
+      value: Calm
+      objectReference: {fileID: 0}
+    - target: {fileID: 114896920272419894, guid: f36d7efe15559494d9b74cbfc6c52ea0,
+        type: 2}
+      propertyPath: music.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4b59930a4cb528841b098494ac82f882, type: 3}
+    - target: {fileID: 114896920272419894, guid: f36d7efe15559494d9b74cbfc6c52ea0,
+        type: 2}
+      propertyPath: music.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114896920272419894, guid: f36d7efe15559494d9b74cbfc6c52ea0,
+        type: 2}
+      propertyPath: music.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114896920272419894, guid: f36d7efe15559494d9b74cbfc6c52ea0,
+        type: 2}
+      propertyPath: music.Array.data[0].loop
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1608,7 +1638,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1841,7 +1871,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1927,3 +1957,44 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2011443427}
   m_CullTransparentMesh: 0
+--- !u!1 &2116961175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2116961177}
+  - component: {fileID: 2116961176}
+  m_Layer: 0
+  m_Name: DemoPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2116961176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2116961175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a831fcf89516543a62d12237e59b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicName: Calm
+--- !u!4 &2116961177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2116961175}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

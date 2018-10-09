@@ -19,11 +19,11 @@ public class Audio
 
     private AudioSource source;
 
-    public void SetSource(AudioSource _source)
+    public void SetSource(AudioSource source)
     {
-        source = _source;
-        source.clip = clip;
-        source.loop = loop;
+        this.source = source;
+        this.source.clip = source.clip;
+        this.source.loop = source.loop;
     }
 
     public void Play()
