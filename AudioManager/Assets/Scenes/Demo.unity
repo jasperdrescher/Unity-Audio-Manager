@@ -1976,9 +1976,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2116961175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19a831fcf89516543a62d12237e59b82, type: 3}
+  m_Script: {fileID: 11500000, guid: e44e5aa477497674eb83a8c66b271b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicName: Calm
 --- !u!4 &2116961177
 Transform:
   m_ObjectHideFlags: 0
