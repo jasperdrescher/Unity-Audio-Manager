@@ -64,6 +64,9 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Play music from the array.
+    /// </summary>
     public void PlayMusic(string name)
     {
         for (int i = 0; i < music.Length; i++)
@@ -77,7 +80,7 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Play a sound-effect.
+    /// Play a sound-effect from the array.
     /// </summary>
     public void PlaySound(string name)
     {
@@ -94,7 +97,24 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Pause a sound.
+    /// Pause music from the array.
+    /// </summary>
+    public void PauseMusic(string name)
+    {
+        for (int i = 0; i < music.Length; i++)
+        {
+            if (music[i].audioName == name)
+            {
+                music[i].Pause();
+                return;
+            }
+        }
+
+        Debug.Log("AudioManager: " + name + " not found in list.");
+    }
+
+    /// <summary>
+    /// Pause a sound from the array.
     /// </summary>
     public void PauseSound(string name)
     {
@@ -111,7 +131,24 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Resume a sound-effect.
+    /// Resume music from the array.
+    /// </summary>
+    public void ResumeMusic(string name)
+    {
+        for (int i = 0; i < music.Length; i++)
+        {
+            if (music[i].audioName == name)
+            {
+                music[i].Resume();
+                return;
+            }
+        }
+
+        Debug.Log("AudioManager: " + name + " not found in list.");
+    }
+
+    /// <summary>
+    /// Resume a sound-effect from the array.
     /// </summary>
     public void ResumeSound(string name)
     {
@@ -128,7 +165,24 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Stop a sound-effect.
+    /// Stop music from the array.
+    /// </summary>
+    public void StopMusic(string name)
+    {
+        for (int i = 0; i < music.Length; i++)
+        {
+            if (music[i].audioName == name)
+            {
+                music[i].Stop();
+                return;
+            }
+        }
+
+        Debug.Log("AudioManager: " + name + " not found in list.");
+    }
+
+    /// <summary>
+    /// Stop a sound-effect from the array.
     /// </summary>
     public void StopSound(string name)
     {
